@@ -2,3 +2,28 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "~@angular/material/theming";
+$theme: mat-light-theme($mat-blue, $mat-blue);
+$config: mat-typography-config();
+
+@include mat-menu-theme($theme);
+
+.custom-connected-overlay-panel {
+  display: block;
+
+  min-width: 112px;
+  max-width: 280px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 4px;
+  outline: 0;
+  min-height: 64px;
+
+  padding: 16px;
+
+  font-family: mat-font-family($config, body-1);
+  font-size: mat-font-size($config, body-1);
+  font-weight: mat-font-weight($config, body-1);
+}

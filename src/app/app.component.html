@@ -1,5 +1,22 @@
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+<section>
+  <button mat-button [matMenuTriggerFor]="menu">Menu component</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+</section>
+
+<section>
+  <button mat-button cdkOverlayOrigin #trigger="cdkOverlayOrigin" (click)="isOpen = !isOpen">Overlay</button>
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    cdkConnectedOverlayHasBackdrop
+    [cdkConnectedOverlayOpen]="isOpen"
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    [cdkConnectedOverlayPanelClass]="['mat-menu-panel', 'custom-connected-overlay-panel']"
+    (backdropClick)="isOpen = false">
+    Custom content <br>
+    <em>Lorem ipsum dolor sit amet enim.</em>
+  </ng-template>
+</section>

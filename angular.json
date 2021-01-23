@@ -122,6 +122,10 @@
               "devServerTarget": "example-ng-material-cdk-overlay:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }

@@ -1,11 +1,19 @@
-import { browser, by, element } from 'protractor';
+import {$, browser, ElementFinder} from 'protractor';
 
 export class AppPage {
   async navigateTo(): Promise<unknown> {
     return browser.get(browser.baseUrl);
   }
 
-  async getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText();
+  getButtonOverlayOrigin(): ElementFinder {
+    return $('button[cdkoverlayorigin]');
+  }
+
+  getOverlayPane(): ElementFinder {
+    return $('.cdk-overlay-pane');
+  }
+
+  getOverlayBackdrop(): ElementFinder {
+    return $('.cdk-overlay-backdrop');
   }
 }

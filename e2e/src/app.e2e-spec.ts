@@ -8,9 +8,31 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', async () => {
+  it('should not display ConnectedOverlay without any action', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('example-ng-material-cdk-overlay app is running!');
+
+    expect(await page.getOverlayPane().isPresent()).toBeFalsy();
+  });
+
+  it('should display ConnectedOverlayPane after button click', async () => {
+    await page.navigateTo();
+
+    expect(await page.getOverlayPane().isPresent()).toBeFalsy();
+
+    await page.getButtonOverlayOrigin().click();
+    expect(await page.getOverlayPane().isPresent()).toBeTruthy();
+  });
+
+  it('should hide ConnectedOverlayPane after OverlayBackdrop click', async () => {
+    await page.navigateTo();
+
+    expect(await page.getOverlayBackdrop().isPresent()).toBeFalsy();
+
+    await page.getButtonOverlayOrigin().click();
+    expect(await page.getOverlayBackdrop().isPresent()).toBeTruthy();
+
+    await page.getOverlayBackdrop().click();
+    expect(await page.getOverlayPane().isPresent()).toBeFalsy();
   });
 
   afterEach(async () => {
